@@ -64,6 +64,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+/* у input стоят min, max, но при вводе с клавитуры они не работают, поэтому вот: */
+
+document.querySelector('input').addEventListener('input', ({ target: t }) => {
+    t.value = Math.max(t.min, Math.min(t.max, t.value));
+  });
+
 /* фигуры не должны выходить за пределы экрана */
 
 window.addEventListener('resize', function() {
